@@ -1,0 +1,48 @@
+/*
+Theme Name: 
+Description: 
+Version: 1.0
+Author: 
+Author URI:
+*/
+ 
+@charset "utf-8";
+@import './assets/css/util/_colors';
+@import './assets/css/util/_mixins'; 
+@import './assets/css/util/_components';
+@import './assets/css/util/_animations';
+@import './node_modules/sass-mediaqueries/_media-queries';
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,600,700');
+@import url(http://weloveiconfonts.com/api/?family=brandico);
+
+a{color:inherit;}
+
+#wrap{overflow: hidden;}
+
+body{
+    *{
+        line-height: 1.3em;
+        position: relative;
+    } 
+    a{
+        text-decoration: none !important;
+    }
+
+    h1, h2, h3, h4, h5, h6,ol,ul,p{
+        margin-bottom:0;
+        margin-top:0;
+    }
+}
+
+// 
+
+// @media (max-width: 767px) {
+
+// }
+
+@media screen and (-ms-high-contrast: active),
+(-ms-high-contrast: none) {
+   body *{line-height: 1;}
+}  
+
+ 
