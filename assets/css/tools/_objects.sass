@@ -3,8 +3,11 @@ body, html
     -webkit-box-sizing: border-box
     -moz-box-sizing: border-box
     box-sizing: border-box
-    input,text,select 
+    button,input,textarea,select 
+        border: 0 
         font-family: inherit
+        margin: 0 0 
+        padding: 0 0
     * 
         &::after,&::before 
             -webkit-box-sizing: inherit
@@ -15,6 +18,10 @@ body, html
         -moz-box-sizing: inherit
         box-sizing: inherit
         line-height: initial
+
+.wrap
+    overflow: hidden
+    position: relative
 
 textarea[placeholder] 
     text-overflow: ellipsis
