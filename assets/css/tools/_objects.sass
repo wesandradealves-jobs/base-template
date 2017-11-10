@@ -1,7 +1,20 @@
 body, html
-    * 
-        font-weight: normal 
     +animation(opacity,2000ms)
+    -webkit-box-sizing: border-box
+    -moz-box-sizing: border-box
+    box-sizing: border-box
+    input,text,select 
+        font-family: inherit
+    * 
+        &::after,&::before 
+            -webkit-box-sizing: inherit
+            -moz-box-sizing: inherit
+            box-sizing: inherit
+        font-weight: normal 
+        -webkit-box-sizing: inherit
+        -moz-box-sizing: inherit
+        box-sizing: inherit
+        line-height: initial
 
 textarea[placeholder] 
     text-overflow: ellipsis
@@ -62,8 +75,8 @@ textarea:-ms-input-placeholder
     display: block
     max-width: 1280px
     margin: 0 auto
-    padding-left: 30px
-    padding-right: 30px
+    padding-left: 15px
+    padding-right: 15px
 
 @for $i from 1 through 5
     h#{$i}

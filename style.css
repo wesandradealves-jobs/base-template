@@ -3,7 +3,16 @@
   overflow: hidden;
 }
 
+body {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 body * {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
   line-height: 1.3em;
   position: relative;
 }
@@ -1873,10 +1882,27 @@ body, html {
   -ms-animation: 2000ms opacity ease-in-out;
   -o-animation: 2000ms opacity ease-in-out;
   animation: 2000ms opacity ease-in-out;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body input, body text, body select, html input, html text, html select {
+  font-family: inherit;
 }
 
 body *, html * {
   font-weight: normal;
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+  line-height: initial;
+}
+
+body *::after, body *::before, html *::after, html *::before {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 textarea[placeholder] {
@@ -1939,8 +1965,8 @@ textarea:-ms-input-placeholder {
   display: block;
   max-width: 1280px;
   margin: 0 auto;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 h1 {
