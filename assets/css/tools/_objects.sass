@@ -19,53 +19,28 @@ body, html
         box-sizing: inherit
         line-height: initial
 
-.wrap
-    overflow: hidden
-    position: relative
-
-textarea[placeholder] 
-    text-overflow: ellipsis
-    color: #eaeaea
-    opacity: 1
-    font-weight: 300
- 
-
-input[placeholder] 
-    text-overflow: ellipsis
-    color: #eaeaea
-    opacity: 1 
-    font-weight: 300
-
-
-::-moz-placeholder 
-    text-overflow: ellipsis 
-    color: #eaeaea
-    opacity: 1
-    font-weight: 300
-
-
-input::-webkit-input-placeholder 
-    color: #eaeaea
-    opacity: 1
-    font-weight: 300
-
-
-textarea::-webkit-input-placeholder 
-    color: #eaeaea
-    opacity: 1
-    font-weight: 300
-
-
-input:-ms-input-placeholder 
-    color: #eaeaea
-    opacity: 1
-    font-weight: 300
-
-
-textarea:-ms-input-placeholder 
-    color: #eaeaea
-    opacity: 1
-    font-weight: 300
+textarea,
+input
+    &[placeholder]
+        color: lightgray
+        font-weight: 300
+        opacity: 1
+        text-overflow: ellipsis
+    &::-moz-placeholder
+        color: lightgray
+        font-weight: 300
+        opacity: 1
+        text-overflow: ellipsis
+    &::-webkit-input-placeholder
+        color: lightgray
+        font-weight: 300
+        opacity: 1
+        text-overflow: ellipsis
+    &:-ms-input-placeholder 
+        color: lightgray
+        font-weight: 300
+        opacity: 1
+        text-overflow: ellipsis
 
 
 .flex  
@@ -74,16 +49,16 @@ textarea:-ms-input-placeholder
     display: -webkit-flex
     display: flex    
 
-
-[class*="brandico-"]::before 
-    font-family: 'brandico', sans-serif
-
 .container
     display: block
-    max-width: 1280px
+    max-width: 980px
     margin: 0 auto
-    padding-left: 15px
-    padding-right: 15px
+    padding-left: 30px
+    padding-right: 30px
+
+p 
+    b,strong 
+        font-weight: bold
 
 @for $i from 1 through 5
     h#{$i}
