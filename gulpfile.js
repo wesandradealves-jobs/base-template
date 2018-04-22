@@ -71,7 +71,7 @@ gulp.task('css-dist', function(){
 });
 
 gulp.task('vendors-js', function() {
-  return gulp.src(['node_modules/jquery/dist/jquery.js','node_modules/jquery-touchswipe/jquery.touchSwipe.js'])
+  return gulp.src('node_modules/jquery/dist/jquery.js')
     .pipe(uglify())
     .pipe(concat('vendors.js'))
     .pipe(multiDest(['assets/js/'], destOptions));
