@@ -102,12 +102,6 @@ gulp.task('fonts', function() {
     );
 });
 
-gulp.task('inc', function() {
-    return gulp.src('inc/*')
-        .pipe(gulp.dest('dist/inc/')
-    );
-});
-
 gulp.task('htaccess', function() {
     return gulp.src('./.htaccess')
         .pipe(gulp.dest('dist')
@@ -132,7 +126,7 @@ gulp.task('serve', ['sass', 'clean:js', 'vendors-js', 'commons-js'], function() 
 
 gulp.task('build', function (callback) {
     console.log('Building project...')
-    runSequence('clean:distjs', ['dist-js', 'css-dist', 'minify', 'images', 'fonts', 'htaccess', 'inc'],
+    runSequence('clean:distjs', ['dist-js', 'css-dist', 'minify', 'images', 'fonts', 'htaccess'],
         callback
     );
 });
