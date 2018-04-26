@@ -1,4 +1,5 @@
-jQuery(document).ready(function () {
-    transformicons.add('.tcon');
+$(document).ready(function () {
+    transformicons.add('.tcon');    
 });
-
+      
+      
