@@ -1,3 +1,5 @@
+// Dependencies
+
 var gulp = require('gulp'),
     sass = require('gulp-sass'),
     cleanCSS = require('gulp-clean-css'),
@@ -10,6 +12,8 @@ var gulp = require('gulp'),
     runSequence = require('run-sequence'),
     browserSync = require('browser-sync').create();
  
+
+// SASS / CSS generator 
 gulp.task('sass', function() {
     gulp.src('**/*.sass')
         .pipe(sass().on('error', sass.logError))
@@ -52,16 +56,21 @@ gulp.task('sass', function() {
         .pipe(browserSync.stream());
 });
 
+
+// CSS to dist
 gulp.task('css-dist', function() {
     return gulp.src(['./style.css'])
         .pipe(gulp.dest('dist')
     );
 });
 
+
+// Delete actual commons and vendors for build updating
 gulp.task('clean:js', function () {
     return del.sync(['assets/js/commons.js','assets/js/vendors.js']);
 });
 
+// Commons .js generator
 gulp.task('commons', function(){
   return gulp.src(['assets/**/*.js','!assets/js/commons','!assets/js/vendors'])
     .pipe(uglify())
@@ -69,6 +78,8 @@ gulp.task('commons', function(){
     .pipe(gulp.dest('assets/js'));
 });
 
+
+// Vendors .js generator
 gulp.task('vendors', function() {
   return gulp.src('node_modules/jquery/dist/jquery.js')
     .pipe(uglify())
@@ -76,36 +87,48 @@ gulp.task('vendors', function() {
     .pipe(gulp.dest('assets/js'));
 });
 
+
+// .js to dist
 gulp.task('js-dist', function() {
     return gulp.src(['assets/js/commons.js','assets/js/vendors.js'])
         .pipe(gulp.dest('dist/assets/js/')
     );
 });
 
+
+// Copy htaccess gzip compressor to dist
 gulp.task('htaccess', function() {
     return gulp.src('./.htaccess')
         .pipe(gulp.dest('dist')
     );
 });
 
+
+// Copy and minify images to dist
 gulp.task('images', function(){
     return gulp.src('assets/imgs/**/*.*')
       .pipe(imagemin())
       .pipe(gulp.dest('dist/assets/imgs'));
 });
 
+
+// Copy and minify html to dist
 gulp.task('html', function() {
     return gulp.src('*.html')
-    .pipe(htmlmin({collapseWhitespace: true}))
+    .pipe(htmlmin({collapseWhitespace: true})) // Opcional
     .pipe(gulp.dest('dist'));
 });
 
+
+// Fonts to dist
 gulp.task('fonts', function() {
     return gulp.src('assets/fonts/*')
         .pipe(gulp.dest('dist/assets/fonts/')
     );
 });
 
+
+// Browsersync + SASS + js generators and cleaner
 gulp.task('serve', ['clean:js', 'sass', 'commons', 'vendors'], function() {
     browserSync.init({
         server: './'
@@ -115,10 +138,12 @@ gulp.task('serve', ['clean:js', 'sass', 'commons', 'vendors'], function() {
     gulp.watch(['assets/**/*.js','!assets/js/commons.js','!assets/js/vendors.js'], ['clean:js','commons','vendors']);
 });
 
+// Clean actual (if exist) dist before build
 gulp.task('clean:build', function () {
     return del.sync(['dist']);
 });
 
+// Build task
 gulp.task('build', function (callback) {
     console.log('Building project...')
     runSequence('clean:build', ['html', 'css-dist', 'images', 'fonts', 'htaccess', 'js-dist'],
@@ -126,4 +151,6 @@ gulp.task('build', function (callback) {
     );
 });
 
+
+// Default task
 gulp.task('default', ['serve']);
