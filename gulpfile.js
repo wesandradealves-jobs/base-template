@@ -8,6 +8,8 @@ const gulp = require('gulp'),
     uglify = require('gulp-uglify'),    
     htmlmin = require('gulp-htmlmin'),
     imagemin = require('gulp-imagemin'),    
+    imageminJpegtran = require('imagemin-jpegtran'),
+    imageminPngquant = require('imagemin-pngquant'),    
     del = require('del'),
     runSequence = require('run-sequence'),
     clean = require('gulp-clean'),
@@ -114,8 +116,13 @@ gulp.task('htaccess', function() {
 
 // Copy and minify images to dist
 gulp.task('images', function(){
-    return gulp.src('assets/imgs/**/*.*')
-      .pipe(imagemin())
+    return gulp.src(['assets/imgs/**/*.png', 'assets/imgs/**/*.jpg'])
+      .pipe(imagemin({
+        plugins: [
+            imageminJpegtran(),
+            imageminPngquant({quality: '65-80'})
+        ]          
+      }))
       .pipe(gulp.dest('dist/assets/imgs'));
 });
 
