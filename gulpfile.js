@@ -82,7 +82,7 @@ gulp.task('scripts', ['clean:js'], function () {
 
 // Commons .js generator
 gulp.task('commons', function(){
-  return gulp.src(['assets/**/*.js','!assets/js/commons.js','!assets/js/vendors.js','!assets/js/jquery.mousewheel.js'])
+  return gulp.src(['assets/**/*.js','!assets/js/commons.js','!assets/js/vendors.js'])
     .pipe(uglify())
     .pipe(concat('commons.js'))
     .pipe(gulp.dest('assets/js'));
@@ -91,7 +91,7 @@ gulp.task('commons', function(){
 
 // Vendors .js generator
 gulp.task('vendors', function() {
-  return gulp.src(['node_modules/jquery/dist/jquery.js', 'node_modules/jquery-mousewheel/jquery.mousewheel.js'])
+  return gulp.src(['node_modules/jquery/dist/jquery.js'])
     .pipe(uglify())
     .pipe(concat('vendors.js'))
     .pipe(gulp.dest('assets/js'));
