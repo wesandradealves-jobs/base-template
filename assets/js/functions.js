@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    transformicons.add('.tcon'); // Transformicon call
+    transformicons.add('.tcon');
 });
       
       

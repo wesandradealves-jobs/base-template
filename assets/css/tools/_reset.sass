@@ -1,27 +1,38 @@
-a
-    color:inherit 
 
-#wrap
-    overflow: hidden
-
-body
+body, html
     -webkit-box-sizing: border-box
     -moz-box-sizing: border-box
     box-sizing: border-box
-    -webkit-font-smoothing: antialiased
-    *
+    min-width: 320px
+    button,input,textarea,select 
+        border: 0 
+        font-family: inherit
+        margin: 0 0 
+        padding: 0 0
+    * 
+        box-sizing: inherit
+        font-weight: normal 
+        line-height: initial
+        position: relative
         -webkit-box-sizing: inherit
         -moz-box-sizing: inherit
-        box-sizing: inherit
-        line-height: 1.3rem
-        position: relative
-        -webkit-font-smoothing: inherit
-    a
-        text-decoration: none !important
+        &::after,&::before 
+            -webkit-box-sizing: inherit
+            -moz-box-sizing: inherit
+            box-sizing: inherit
+a
+    color: inherit
+    text-decoration: none
 
-    h1, h2, h3, h4, h5, h6,ol,ul,p
-        margin-bottom: 0
-        margin-top: 0
+p 
+    b,strong 
+        font-weight: normal
+
+@for $i from 1 through 5
+    h#{$i}
+        font-weight: normal
+        margin: 0 0
+        padding: 0 0 
 
 @media screen and (-ms-high-contrast: active),
 (-ms-high-contrast: none) 
@@ -146,6 +157,3 @@ table
 ol,
 ul 
     list-style: none
-
-a 
-    color: inherit
