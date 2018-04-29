@@ -9,7 +9,10 @@ const gulp = require('gulp'),
     htmlmin = require('gulp-htmlmin'),
     imagemin = require('gulp-imagemin'),    
     imageminJpegtran = require('imagemin-jpegtran'),
-    imageminPngquant = require('imagemin-pngquant'),    
+    imageminPngquant = require('imagemin-pngquant'), 
+    imageminGifsicle = require('imagemin-gifsicle'), 
+    imageminSvgo = require('imagemin-svgo'),    
+    imageminOptipng = require('imagemin-optipng'),    
     del = require('del'),
     runSequence = require('run-sequence'),
     clean = require('gulp-clean'),
@@ -82,7 +85,7 @@ gulp.task('scripts', ['clean:js'], function () {
 
 // Commons .js generator
 gulp.task('commons', function(){
-  return gulp.src(['assets/**/*.js','!assets/js/commons.js','!assets/js/vendors.js'])
+  return gulp.src(['assets/**/*.js','!assets/js/commons.js','!assets/js/vendors.js','!assets/js/jquery.mousewheel.js'])
     .pipe(uglify())
     .pipe(concat('commons.js'))
     .pipe(gulp.dest('assets/js'));
@@ -91,7 +94,7 @@ gulp.task('commons', function(){
 
 // Vendors .js generator
 gulp.task('vendors', function() {
-  return gulp.src(['node_modules/jquery/dist/jquery.js'])
+  return gulp.src(['node_modules/jquery/dist/jquery.js', 'node_modules/jquery-mousewheel/jquery.mousewheel.js'])
     .pipe(uglify())
     .pipe(concat('vendors.js'))
     .pipe(gulp.dest('assets/js'));
